@@ -4,7 +4,7 @@
 Package dbg is a println/printf/log-debugging utility library.
 
     import (
-        Dbg "github.com/robertkrimen/dbg"
+        Dbg "github.com/R358/dbg"
     )
 
     dbg, dbgf := Dbg.New()
@@ -38,7 +38,7 @@ a customization function:
 
     import (
         "bytes"
-        Dbg "github.com/robertkrimen/dbg"
+        Dbg "github.com/R358/dbg"
         "os"
     )
 
@@ -145,7 +145,7 @@ New will create and return a pair of debugging functions. You can customize wher
 they output to by passing in an (optional) customization function:
 
     import (
-        Dbg "github.com/robertkrimen/dbg"
+        Dbg "github.com/R358/dbg"
         "os"
     )
 

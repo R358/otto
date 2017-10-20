@@ -4,7 +4,7 @@ Package otto is a JavaScript parser and interpreter written natively in Go.
 http://godoc.org/github.com/robertkrimen/otto
 
     import (
-        "github.com/robertkrimen/otto"
+        "github.com/R358/otto"
     )
 
 Run something in the VM
@@ -118,8 +118,8 @@ underscore
 Optionally include the JavaScript utility-belt library, underscore, with this import:
 
 	import (
-		"github.com/robertkrimen/otto"
-		_ "github.com/robertkrimen/otto/underscore"
+		"github.com/R358/otto"
+		_ "github.com/R358/otto/underscore"
 	)
 
 	// Now every otto runtime will come loaded with underscore
@@ -164,7 +164,7 @@ If you want to stop long running executions (like third-party code), you can use
         "os"
         "time"
 
-        "github.com/robertkrimen/otto"
+        "github.com/R358/otto"
     )
 
     var halt = errors.New("Stahp")
@@ -228,8 +228,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/robertkrimen/otto/file"
-	"github.com/robertkrimen/otto/registry"
+	"github.com/R358/otto/file"
+	"github.com/R358/otto/registry"
 )
 
 // Otto is the representation of the JavaScript runtime. Each instance of Otto has a self-contained namespace.

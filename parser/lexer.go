@@ -10,9 +10,9 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/robertkrimen/otto/ast"
-	"github.com/robertkrimen/otto/file"
-	"github.com/robertkrimen/otto/token"
+	"github.com/R358/otto/ast"
+	"github.com/R358/otto/file"
+	"github.com/R358/otto/token"
 )
 
 type _chr struct {
@@ -293,7 +293,7 @@ func (self *_parser) scan() (tkn token.Token, literal string, idx file.Idx) {
 				tkn = token.BITWISE_NOT
 			case '?':
 				tkn = token.QUESTION_MARK
-			case '"', '\'':
+			case '"', '\'', '`':
 				insertSemicolon = true
 				tkn = token.STRING
 				var err error
@@ -559,16 +559,16 @@ func (self *_parser) scanEscape(quote rune) {
 func (self *_parser) scanString(offset int) (string, error) {
 	// " ' /
 	quote := rune(self.str[offset])
-
+	denyMultiLine := quote != '`'
 	for self.chr != quote {
 		chr := self.chr
-		if chr == '\n' || chr == '\r' || chr == '\u2028' || chr == '\u2029' || chr < 0 {
+		if (denyMultiLine && (chr == '\n' || chr == '\r' || chr == '\u2028' || chr == '\u2029')) || chr < 0 {
 			goto newline
 		}
 		self.read()
 		if chr == '\\' {
 			if quote == '/' {
-				if self.chr == '\n' || self.chr == '\r' || self.chr == '\u2028' || self.chr == '\u2029' || self.chr < 0 {
+				if (denyMultiLine && (chr == '\n' || chr == '\r' || self.chr == '\u2028' || self.chr == '\u2029')) || self.chr < 0 {
 					goto newline
 				}
 				self.read()
@@ -586,7 +586,6 @@ func (self *_parser) scanString(offset int) (string, error) {
 
 	// " ' /
 	self.read()
-
 	return string(self.str[offset:self.chrOffset]), nil
 
 newline:

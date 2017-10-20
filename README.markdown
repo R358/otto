@@ -1,7 +1,7 @@
 # otto
 --
 ```go
-import "github.com/robertkrimen/otto"
+import "github.com/R358/otto"
 ```
 
 Package otto is a JavaScript parser and interpreter written natively in Go.
@@ -10,7 +10,7 @@ http://godoc.org/github.com/robertkrimen/otto
 
 ```go
 import (
-   "github.com/robertkrimen/otto"
+   "github.com/R358/otto"
 )
 ```
 
@@ -151,8 +151,8 @@ import:
 
 ```go
 import (
-    "github.com/robertkrimen/otto"
-    _ "github.com/robertkrimen/otto/underscore"
+    "github.com/R358/otto"
+    _ "github.com/R358/otto/underscore"
 )
 
 // Now every otto runtime will come loaded with underscore
@@ -207,7 +207,7 @@ import (
     "os"
     "time"
 
-    "github.com/robertkrimen/otto"
+    "github.com/R358/otto"
 )
 
 var halt = errors.New("Stahp")
